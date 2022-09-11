@@ -23,11 +23,11 @@ export function CardList({
   }, [pageNo, pageSize, sortType]);
 
   return (
-    <>
+    <section>
       <CardInput category={category} />
       {learnings.map((x, index) => (
         <Card.Summary key={`card-${index}`} {...x} remove={remove} />
       ))}
-    </>
+    </section>
   );
 }
