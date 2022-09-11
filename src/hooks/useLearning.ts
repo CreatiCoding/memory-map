@@ -1,4 +1,4 @@
-export const LEARNING_CATEGORY = {
+const LEARNING_CATEGORY = {
   "english-world": {
     name: "영단어",
     value: "english-world",
@@ -9,34 +9,54 @@ export const LEARNING_CATEGORY = {
   },
 } as const;
 
+export const LEARNING_CATEGORY_NAMES = Object.keys(LEARNING_CATEGORY);
+
 interface LearningCategory {
   name: keyof typeof LEARNING_CATEGORY;
   value: typeof LEARNING_CATEGORY[LearningCategory["name"]];
 }
 
-interface Learning<T extends LearningCategory["name"]> {
-  category: T;
+interface Tag {
+  name: string;
+  url: string;
+}
+
+export interface Learning {
+  category: LearningCategory["name"];
   no: number;
   title: string;
   contents: string;
   viewCount: number;
+  tags: Tag[];
   createdAt: Date;
 }
 
+function getList(category: LearningCategory["name"]) {
+  if (typeof window === "undefined") return [];
+  return JSON.parse(
+    localStorage.getItem(`learning-${category}`) ?? "[]"
+  ) as Learning[];
+}
+
+function setList({
+  list,
+  category,
+}: {
+  list: Learning[];
+  category: LearningCategory["name"];
+}) {
+  if (typeof window === "undefined") return;
+
+  return localStorage.setItem(`learning-${category}`, JSON.stringify(list));
+}
+
 // TODO: 라이브러리로 빼기
-export function useLearning<T extends LearningCategory["name"]>(category: T) {
-  const getList = () =>
-    JSON.parse(
-      localStorage.getItem(`learning-${category}`) ?? "[]"
-    ) as Learning<T>[];
-
-  const setList = (list: Learning<T>[]) =>
-    localStorage.setItem(`learning-${category}`, JSON.stringify(list));
-
+export function useLearning(category: LearningCategory["name"]) {
   return {
     getDetail: (learningNo: number) => {
-      return getList()[learningNo];
+      return getList(category)[learningNo];
     },
+
     getList: ({
       pageNo = 1,
       pageSize = 5,
@@ -46,7 +66,7 @@ export function useLearning<T extends LearningCategory["name"]>(category: T) {
       pageSize?: number;
       sortType?: "asc" | "desc";
     } = {}) => {
-      const list = getList();
+      const list = getList(category);
       const sortedList =
         sortType === "asc"
           ? list
@@ -62,8 +82,13 @@ export function useLearning<T extends LearningCategory["name"]>(category: T) {
         totalCount: list.length,
       } as const;
     },
-    add: ({ title, contents }: Pick<Learning<T>, "title" | "contents">) => {
-      const list = getList();
+
+    add: ({
+      title,
+      contents,
+      tags,
+    }: Pick<Learning, "title" | "contents" | "tags">) => {
+      const list = getList(category);
 
       list.push({
         no: list.length + 1,
@@ -72,16 +97,18 @@ export function useLearning<T extends LearningCategory["name"]>(category: T) {
         contents,
         createdAt: new Date(),
         viewCount: 0,
+        tags,
       });
 
-      return setList(list);
+      return setList({ list, category });
     },
+
     modify: ({
       no,
       title,
       contents,
-    }: Pick<Learning<T>, "no" | "title" | "contents">) => {
-      const list = getList();
+    }: Pick<Learning, "no" | "title" | "contents">) => {
+      const list = getList(category);
       const learning = list.find((x) => x.no === no);
 
       if (learning == null) {
@@ -91,10 +118,14 @@ export function useLearning<T extends LearningCategory["name"]>(category: T) {
       learning.title = title;
       learning.contents = contents;
 
-      return setList(list);
+      return setList({ list, category });
     },
-    remove: ({ no }: Pick<Learning<T>, "no">) => {
-      return setList(getList().filter((x) => x.no !== no));
+
+    remove: ({ no }: Pick<Learning, "no">) => {
+      return setList({
+        list: getList(category).filter((x) => x.no !== no),
+        category,
+      });
     },
   };
 }
