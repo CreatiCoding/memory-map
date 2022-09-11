@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { usePersistentStorage } from "../src/hooks/usePersistentStorage";
 
 export default function App({ Component, pageProps }: AppProps) {
-  usePersistentStorage();
+  const [enabledPersistentStorage] = usePersistentStorage();
 
   return (
     <>
@@ -14,6 +14,8 @@ export default function App({ Component, pageProps }: AppProps) {
           content="see also https://github.com/creaticoding/memory-map"
         />
       </Head>
+
+      {enabledPersistentStorage}
 
       <Component {...pageProps} />
     </>
