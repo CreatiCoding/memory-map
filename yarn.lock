@@ -1958,6 +1958,7 @@ __metadata:
     react: 18.2.0
     react-dom: 18.2.0
     typescript: ^4.8.3
+    use-local-storage: ^2.3.6
   languageName: unknown
   linkType: soft
 
@@ -2720,6 +2721,15 @@ __metadata:
   dependencies:
     punycode: ^2.1.0
   checksum: 7167432de6817fe8e9e0c9684f1d2de2bb688c94388f7569f7dbdb1587c9f4ca2a77962f134ec90be0cc4d004c939ff0d05acc9f34a0db39a3c797dada262633
+  languageName: node
+  linkType: hard
+
+"use-local-storage@npm:^2.3.6":
+  version: 2.3.6
+  resolution: "use-local-storage@npm:2.3.6"
+  peerDependencies:
+    react: ">=16.8.1"
+  checksum: e040b2344a087d2e562182fa92e05a14aa97620cca721da35a30bfa6671d88883a6317037be937159b88ee96bcfaaa76ff24f4f0f93a951702f9ebe30b57cdd6
   languageName: node
   linkType: hard
 
