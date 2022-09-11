@@ -1,10 +1,21 @@
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";
 
+const isSafari = () => {
+  return (
+    typeof navigator !== "undefined" &&
+    /Version\/[\d\\.]+.*Safari/.test(navigator.userAgent)
+  );
+};
+
 export function usePersistentStorage() {
   const [enabled, setEnabled] = useState<boolean>(true);
 
   useEffect(() => {
+    if (!isSafari()) {
+      return;
+    }
+
     // Request persistent storage for site
     (async () => {
       if (navigator.storage != null && navigator.storage.persist != null) {

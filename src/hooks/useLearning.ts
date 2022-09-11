@@ -127,5 +127,5 @@ export function useLearning(category: LearningCategory["name"]) {
         category,
       });
     },
-  };
+  } as const;
 }

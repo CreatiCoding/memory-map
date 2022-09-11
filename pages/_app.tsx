@@ -1,6 +1,7 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
 import { usePersistentStorage } from "../src/hooks/usePersistentStorage";
+import "../src/styles/reset.css";
 
 export default function App({ Component, pageProps }: AppProps) {
   const [enabledPersistentStorage] = usePersistentStorage();

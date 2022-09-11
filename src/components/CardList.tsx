@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Learning, useLearning } from "../hooks/useLearning";
 import { Card } from "./Card";
 import { CardInput } from "./CardInput";
@@ -13,15 +14,20 @@ export function CardList({
   pageSize?: number;
   sortType?: "asc" | "desc";
 }) {
-  const { getList } = useLearning(category);
-  const { data } = getList({ pageNo, pageSize, sortType });
+  const { getList, remove } = useLearning(category);
+  const [learnings, setLearnings] = useState<Learning[]>([]);
+
+  useEffect(() => {
+    setLearnings(getList({ pageNo, pageSize, sortType }).data);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pageNo, pageSize, sortType]);
 
   return (
-    <div>
+    <>
       <CardInput category={category} />
-      {data.map((x, index) => (
-        <Card.Summary key={`card-${index}`} {...x} />
+      {learnings.map((x, index) => (
+        <Card.Summary key={`card-${index}`} {...x} remove={remove} />
       ))}
-    </div>
+    </>
   );
 }
