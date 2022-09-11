@@ -7,7 +7,7 @@ export function usePersistentStorage() {
   useEffect(() => {
     // Request persistent storage for site
     (async () => {
-      if (navigator.storage && navigator.storage.persist) {
+      if (navigator.storage != null && navigator.storage.persist != null) {
         const isPersisted = await navigator.storage.persist();
         setEnabled(isPersisted);
       } else {
