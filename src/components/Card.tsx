@@ -179,10 +179,12 @@ function Detail({
           grid-column: 1/5;
           grid-row: 3/4;
           padding: 20px;
+
+          word-break: break-all;
+          white-space: pre-line;
         `}
-      >
-        {contents}
-      </span>
+        dangerouslySetInnerHTML={{ __html: convert(contents) }}
+      ></span>
       <span
         css={css`
           grid-column: 1/2;
@@ -207,6 +209,9 @@ function Detail({
           grid-row: 4/5;
           border: 1px solid;
           border-radius: 6px;
+          width: 40px;
+          height: 30px;
+
           &:hover {
             background-color: #d0d0d0;
           }
@@ -226,3 +231,48 @@ export const Card = {
   Summary,
   Detail,
 };
+
+function convert(html: string) {
+  const lines = html.split("\n");
+  const resultLines = [];
+
+  let codeOpen = false;
+  for (const line of lines) {
+    let result = "";
+    const tokens = line.split("**");
+
+    for (let i = 0; i < tokens.length; i++) {
+      result +=
+        tokens[i] +
+        (i !== tokens.length - 1
+          ? i % 2 === 0
+            ? "<span style='font-weight: bold;'>"
+            : "</span>"
+          : "");
+    }
+
+    if (result.startsWith("```")) {
+      if (codeOpen) {
+        resultLines.push(`</code>`.trimStart());
+        codeOpen = false;
+      } else {
+        resultLines.push(`<code style="${codeStyle}">`.trimStart());
+        codeOpen = true;
+      }
+      continue;
+    }
+
+    resultLines.push(result.trimStart());
+  }
+
+  return resultLines.join("\n").trimStart();
+}
+
+const codeStyle = `
+  background-color: lightgoldenrodyellow;
+  display: block;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0 8px 8px 8px;
+  margin: 4px;
+`;
