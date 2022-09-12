@@ -1,3 +1,5 @@
+import { reverseYYYYMMddHHmmss, yyyyMMddHHmmss } from "../utils/date";
+
 const LEARNING_CATEGORY = {
   "english-world": {
     name: "영단어",
@@ -28,7 +30,7 @@ export interface Learning {
   contents: string;
   viewCount: number;
   tags: Tag[];
-  createdAt: Date;
+  createdAt: string;
 }
 
 function getList(category: LearningCategory["name"]) {
@@ -53,8 +55,8 @@ function setList({
 // TODO: 라이브러리로 빼기
 export function useLearning(category: LearningCategory["name"]) {
   return {
-    getDetail: (learningNo: number) => {
-      return getList(category)[learningNo];
+    getDetail: ({ no }: Pick<Learning, "no">) => {
+      return getList(category).find((x) => x.no === no);
     },
 
     getList: ({
@@ -70,7 +72,11 @@ export function useLearning(category: LearningCategory["name"]) {
       const sortedList =
         sortType === "asc"
           ? list
-          : list.sort((a, b) => a.createdAt.getTime() - b.createdAt.getTime());
+          : list.sort(
+              (a, b) =>
+                reverseYYYYMMddHHmmss(a.createdAt).getTime() -
+                reverseYYYYMMddHHmmss(b.createdAt).getTime()
+            );
 
       const pagedList = sortedList.slice(
         (pageNo - 1) * pageSize,
@@ -95,7 +101,7 @@ export function useLearning(category: LearningCategory["name"]) {
         category,
         title,
         contents,
-        createdAt: new Date(),
+        createdAt: yyyyMMddHHmmss(new Date()),
         viewCount: 0,
         tags,
       });

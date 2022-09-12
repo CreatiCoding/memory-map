@@ -25,13 +25,13 @@ export function CardList({
 
   return (
     <section>
-      <CardInput category={category} />
+      <CardInput width={500} category={category} />
 
       <br />
 
       <ul
         css={css`
-          background-color: blueviolet;
+          /* background-color: blueviolet; */
         `}
       >
         {learnings.map((x, index) => (

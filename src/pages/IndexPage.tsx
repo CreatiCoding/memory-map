@@ -6,7 +6,9 @@ import { margin, width } from "../utils/css";
 export function IndexPage() {
   return (
     <Main>
+      <br />
       <Title center>Memory Map</Title>
+      <br />
       <br />
       <CardList category="coding-architecture" />
     </Main>

@@ -2,7 +2,7 @@ import { Learning, useLearning } from "../hooks/useLearning";
 import { useRouter } from "next/router";
 import { useForm, FormProvider } from "react-hook-form";
 import { Input } from "./Input";
-import { width } from "../utils/css";
+import cssUtils from "../utils/css";
 import { css } from "@emotion/react";
 import { Button } from "./Button";
 
@@ -16,7 +16,11 @@ const defaultValues = {
   contents: "",
 };
 
-export function CardInput({ category }: Pick<Learning, "category">) {
+interface Props extends Pick<Learning, "category"> {
+  width?: number;
+}
+
+export function CardInput({ category, width = 500 }: Props) {
   const { add } = useLearning(category);
   const router = useRouter();
   const methods = useForm<InputProps>({
@@ -28,7 +32,7 @@ export function CardInput({ category }: Pick<Learning, "category">) {
   return (
     <div
       css={css`
-        ${width(500)}
+        ${cssUtils.width(width)}
         margin: 0 auto;
       `}
     >
