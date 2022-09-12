@@ -3,8 +3,8 @@ import { useRouter } from "next/router";
 import { useForm, FormProvider } from "react-hook-form";
 import { Input } from "./Input";
 import { width } from "../utils/css";
-import styled from "@emotion/styled";
 import { css } from "@emotion/react";
+import { Button } from "./Button";
 
 interface InputProps {
   title: string;
@@ -34,29 +34,21 @@ export function CardInput({ category }: Pick<Learning, "category">) {
     >
       <FormProvider {...methods}>
         <Input placeholder="Title" type="text" name="title" width={500} />
-        <br />
         <Input
           placeholder="Contents"
           type="textarea"
           name="contents"
           width={500}
         />
-        <br />
-        <SubmitButton
+        <Button.Submit
           onClick={methods.handleSubmit(() => {
             add({ title, contents, tags: [] });
             router.reload();
           })}
         >
           추가
-        </SubmitButton>
+        </Button.Submit>
       </FormProvider>
     </div>
   );
 }
-
-const SubmitButton = styled.button`
-  margin: 0 0 0 100%;
-  transform: translate(-100%, 0);
-  width: 50px;
-`;

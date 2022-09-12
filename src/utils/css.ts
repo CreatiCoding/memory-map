@@ -30,8 +30,20 @@ width.percent = (percent: number) => {
   `;
 };
 
+const height = (px: number) => {
+  return css`
+    height: ${px}px;
+  `;
+};
+
+height.percent = (percent: number) => {
+  return css`
+    height: ${percent}%;
+  `;
+};
+
 export { margin, width };
 
-const cssUtils = { margin, width };
+const cssUtils = { margin, width, height };
 
 export default cssUtils;

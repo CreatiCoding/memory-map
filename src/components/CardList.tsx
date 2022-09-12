@@ -1,3 +1,4 @@
+import { css } from "@emotion/react";
 import { useEffect, useState } from "react";
 import { Learning, useLearning } from "../hooks/useLearning";
 import { Card } from "./Card";
@@ -25,9 +26,18 @@ export function CardList({
   return (
     <section>
       <CardInput category={category} />
-      {learnings.map((x, index) => (
-        <Card.Summary key={`card-${index}`} {...x} remove={remove} />
-      ))}
+
+      <br />
+
+      <ul
+        css={css`
+          background-color: blueviolet;
+        `}
+      >
+        {learnings.map((x, index) => (
+          <Card.Summary key={`card-${index}`} {...x} remove={remove} />
+        ))}
+      </ul>
     </section>
   );
 }
