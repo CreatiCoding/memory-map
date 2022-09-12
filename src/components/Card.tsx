@@ -240,7 +240,10 @@ export const Card = {
 };
 
 function convert(html: string) {
-  const lines = html.split("\n");
+  const lines = html
+    .replaceAll("<", "&#60;")
+    .replaceAll(">", "&#62;")
+    .split("\n");
   const resultLines = [];
 
   let codeOpen = false;
@@ -258,18 +261,18 @@ function convert(html: string) {
           : "");
     }
 
-    if (result.startsWith("```")) {
+    if (result.trimStart().startsWith("```")) {
       if (codeOpen) {
-        resultLines.push(`</code>`.trimStart());
+        resultLines.push(`</code>`);
         codeOpen = false;
       } else {
-        resultLines.push(`<code style="${codeStyle}">`.trimStart());
+        resultLines.push(`<code style="${codeStyle}">`);
         codeOpen = true;
       }
       continue;
     }
 
-    resultLines.push(result.trimStart());
+    resultLines.push(result);
   }
 
   return resultLines.join("\n").trimStart();
@@ -282,4 +285,6 @@ const codeStyle = `
   border-radius: 8px;
   padding: 0 8px 8px 8px;
   margin: 4px;
+  word-break: break-all;
+  white-space: pre-wrap;
 `;
