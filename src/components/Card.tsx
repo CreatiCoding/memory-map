@@ -22,7 +22,7 @@ function Summary({
       }}
       css={css`
         height: 40px;
-        margin: 5px 0;
+        margin: 16px 0;
         border-radius: 8px;
         padding: 12px 4px;
         display: grid;
