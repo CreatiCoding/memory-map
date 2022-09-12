@@ -99,10 +99,12 @@ function Detail({
     <div
       css={css`
         display: grid;
-        grid-template-rows: 15px 45px 1fr 40px;
+        grid-template-rows: 20px 45px 1fr 40px;
         grid-template-columns: 50px 1fr 180px 50px;
         border: 1px solid black;
         border-radius: 8px;
+        overflow: hidden;
+        background-color: lightcyan;
       `}
     >
       <span
@@ -112,6 +114,7 @@ function Detail({
           border-bottom: 1px solid black;
           padding: 8px;
           position: relative;
+          background-color: lightgreen;
         `}
       >
         <span
@@ -139,6 +142,7 @@ function Detail({
           grid-row: 1/2;
           padding: 8px;
           font-size: 12px;
+          background-color: lightgreen;
         `}
       >
         {category}
@@ -150,6 +154,7 @@ function Detail({
           border-bottom: 1px solid black;
           padding: 8px;
           position: relative;
+          background-color: lightgreen;
         `}
       >
         <span
@@ -177,6 +182,7 @@ function Detail({
           border-bottom: 1px solid black;
           padding: 8px;
           font-size: 24px;
+          background-color: lightgreen;
         `}
       >
         {title}
@@ -186,7 +192,6 @@ function Detail({
           grid-column: 1/5;
           grid-row: 3/4;
           padding: 20px;
-
           word-break: break-all;
           white-space: pre-line;
         `}
