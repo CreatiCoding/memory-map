@@ -113,7 +113,8 @@ export function useLearning(category: LearningCategory["name"]) {
       no,
       title,
       contents,
-    }: Pick<Learning, "no" | "title" | "contents">) => {
+      viewCount,
+    }: Pick<Learning, "no" | "title" | "contents" | "viewCount">) => {
       const list = getList(category);
       const learning = list.find((x) => x.no === no);
 
@@ -123,6 +124,7 @@ export function useLearning(category: LearningCategory["name"]) {
 
       learning.title = title;
       learning.contents = contents;
+      learning.viewCount = viewCount;
 
       return setList({ list, category });
     },

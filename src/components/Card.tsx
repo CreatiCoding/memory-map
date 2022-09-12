@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
-import { Learning } from "../hooks/useLearning";
+import { useEffect } from "react";
+import { Learning, useLearning } from "../hooks/useLearning";
 import { Button } from "./Button";
 
 interface Props extends Learning {
@@ -87,6 +88,12 @@ function Detail({
   remove,
 }: Props) {
   const router = useRouter();
+  const { modify } = useLearning(category);
+
+  useEffect(() => {
+    modify({ no, title, contents, viewCount: viewCount + 1 });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div
@@ -160,7 +167,7 @@ function Detail({
             background-color: bisque;
           `}
         >
-          {viewCount}
+          {viewCount + 1}
         </span>
       </span>
       <span
