@@ -1,5 +1,5 @@
-import Head from "next/head";
 import type { AppProps } from "next/app";
+import Head from "next/head";
 import { usePersistentStorage } from "../src/hooks/usePersistentStorage";
 import "../src/styles/reset.css";
 
