@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { Card } from "../components/Card";
 import { Txt } from "../components/Txt";
+import { COLOR_SET } from "../constants/colors";
 import { Learning, useLearning } from "../hooks/useLearning";
 import { margin, width } from "../utils/css";
 
@@ -33,15 +34,23 @@ export function LearningDetailPage() {
   }
 
   return (
-    <Main>
-      <br />
-      <Title center>Memory Map</Title>
-      <br />
-      <br />
-      <Card.Detail {...learning} category={category} remove={remove} />
-    </Main>
+    <Background>
+      <Main>
+        <br />
+        <Title center>Memory Map</Title>
+        <br />
+        <br />
+        <Card.Detail {...learning} category={category} remove={remove} />
+      </Main>
+    </Background>
   );
 }
+
+const Background = styled.div`
+  background-color: ${COLOR_SET.NOTION.background};
+  min-height: 100vh;
+  padding-bottom: 100px;
+`;
 
 const Main = styled.main`
   ${width(720)}

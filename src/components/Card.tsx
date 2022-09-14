@@ -23,7 +23,6 @@ function Summary({
         router.push(`/learning/${no}`);
       }}
       css={css`
-        height: 40px;
         margin: 16px 0;
         border: 1px solid;
         border-radius: 8px;
@@ -35,7 +34,7 @@ function Summary({
         cursor: pointer;
         /* box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px,
           rgb(0 0 0 / 19%) 0px 6px 20px 0px; */
-        background-color: ${Theme.card.background};
+        background-color: ${Theme.card.header};
 
         &:hover {
           background-color: ${Theme.card.hover};
