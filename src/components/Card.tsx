@@ -209,7 +209,7 @@ function Detail({
       >
         {title}
       </span>
-      <span
+      <section
         css={css`
           grid-column: 1/5;
           grid-row: 3/4;
@@ -218,7 +218,7 @@ function Detail({
           white-space: pre-line;
         `}
         dangerouslySetInnerHTML={{ __html: convert(contents) }}
-      ></span>
+      ></section>
       <span
         css={css`
           grid-column: 1/2;
@@ -272,13 +272,23 @@ function convert(html: string) {
     const tokens = line.split("**");
 
     for (let i = 0; i < tokens.length; i++) {
-      result +=
-        tokens[i] +
-        (i !== tokens.length - 1
-          ? i % 2 === 0
-            ? "<span style='font-weight: bold;'>"
-            : "</span>"
-          : "");
+      // 첫 토큰이거나 마지막 토큰일 때
+      if (i === 0 || i !== tokens.length - 1) {
+        result += tokens[i] !== "" ? `<span>${tokens[i]}</span>` : "";
+        continue;
+      }
+
+      // 홀수 토큰일 때
+      if (i % 2 === 1) {
+        result += tokens[i] + "</span>";
+        continue;
+      }
+
+      // 짝수 토큰일 때
+      if (i % 2 === 0) {
+        result += tokens[i] + "<span style='font-weight: bold;'>";
+        continue;
+      }
     }
 
     if (result.trimStart().startsWith("```")) {

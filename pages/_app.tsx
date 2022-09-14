@@ -14,7 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
           name="description"
           content="see also https://github.com/creaticoding/memory-map"
         />
-        <link rel="manifest" href="manifest.json" />
+        <link rel="manifest" href="/manifest.json" />
       </Head>
 
       {enabledPersistentStorage}
