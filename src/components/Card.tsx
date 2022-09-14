@@ -268,30 +268,7 @@ function convert(html: string) {
 
   let codeOpen = false;
   for (const line of lines) {
-    let result = "";
-    const tokens = line.split("**");
-
-    for (let i = 0; i < tokens.length; i++) {
-      // 첫 토큰이거나 마지막 토큰일 때
-      if (i === 0 || i !== tokens.length - 1) {
-        result += tokens[i] !== "" ? `<span>${tokens[i]}</span>` : "";
-        continue;
-      }
-
-      // 홀수 토큰일 때
-      if (i % 2 === 1) {
-        result += tokens[i] + "</span>";
-        continue;
-      }
-
-      // 짝수 토큰일 때
-      if (i % 2 === 0) {
-        result += tokens[i] + "<span style='font-weight: bold;'>";
-        continue;
-      }
-    }
-
-    if (result.trimStart().startsWith("```")) {
+    if (line.trimStart().startsWith("```")) {
       if (codeOpen) {
         resultLines.push(`</code>`);
         codeOpen = false;
@@ -300,6 +277,35 @@ function convert(html: string) {
         codeOpen = true;
       }
       continue;
+    }
+
+    let result = "";
+    const tokens = line.split("**");
+
+    for (let i = 0; i < tokens.length; i++) {
+      // 첫 토큰이거나 마지막 토큰일 때
+      if (i === 0) {
+        result += tokens[i] !== "" ? `<span>${tokens[i]}</span>` : "";
+        continue;
+      }
+
+      // 홀수 토큰일 때
+      if (i % 2 === 1) {
+        result += "<span style='font-weight: bold;'>" + tokens[i] + "</span>";
+        continue;
+      }
+
+      // 짝수 토큰일 때
+      if (i % 2 === 0) {
+        result += tokens[i] !== "" ? `<span>${tokens[i]}</span>` : "";
+        continue;
+      }
+
+      // 마지막 토큰일 때
+      if (i !== tokens.length - 1) {
+        result += tokens[i] !== "" ? `${tokens[i]}</span>` : "";
+        continue;
+      }
     }
 
     resultLines.push(result);
