@@ -1,11 +1,10 @@
-import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { Background } from "../components/Background";
 import { Card } from "../components/Card";
-import { Txt } from "../components/Txt";
-import { COLOR_SET } from "../constants/colors";
+import { Main } from "../components/Main";
+import { Title } from "../components/Title";
 import { Learning, useLearning } from "../hooks/useLearning";
-import { margin, width } from "../utils/css";
 
 export function LearningDetailPage() {
   const router = useRouter();
@@ -45,18 +44,3 @@ export function LearningDetailPage() {
     </Background>
   );
 }
-
-const Background = styled.div`
-  background-color: ${COLOR_SET.NOTION.background};
-  min-height: 100vh;
-  padding-bottom: 100px;
-`;
-
-const Main = styled.main`
-  ${width(720)}
-  margin: 0 auto;
-`;
-
-const Title = styled(Txt.H1)`
-  ${margin(10)}
-`;
