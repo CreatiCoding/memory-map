@@ -1,5 +1,6 @@
 import { css } from "@emotion/react";
 import { MouseEventHandler, ReactNode } from "react";
+import { Theme } from "../constants/colors";
 import cssUtils from "../utils/css";
 
 interface Props {
@@ -18,7 +19,16 @@ function Button({ className, onClick, children, width, right = false }: Props) {
       css={css`
         ${cssUtils.width(width ?? 50)}
         ${rightCss(right)}
+
+        border: 1px solid;
+        border-radius: 6px;
+        width: 60px;
+        height: 30px;
         cursor: pointer;
+        background-color: ${Theme.button.primary};
+        &:hover {
+          background-color: ${Theme.button.hover};
+        }
       `}
     >
       {children}

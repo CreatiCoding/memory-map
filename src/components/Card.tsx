@@ -1,6 +1,7 @@
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { Theme } from "../constants/colors";
 import { Learning, useLearning } from "../hooks/useLearning";
 import { Button } from "./Button";
 
@@ -24,18 +25,20 @@ function Summary({
       css={css`
         height: 40px;
         margin: 16px 0;
+        border: 1px solid;
         border-radius: 8px;
         padding: 12px 4px;
         display: grid;
-        grid-template-columns: 50px 1fr 50px;
-        grid-template-rows: 9fr 1fr;
+        grid-template-columns: 90px 1fr 90px;
+        grid-template-rows: auto 10px;
         align-items: center;
         cursor: pointer;
-        box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px,
-          rgb(0 0 0 / 19%) 0px 6px 20px 0px;
+        /* box-shadow: rgb(0 0 0 / 20%) 0px 4px 8px 0px,
+          rgb(0 0 0 / 19%) 0px 6px 20px 0px; */
+        background-color: ${Theme.card.background};
 
         &:hover {
-          background-color: #f0f0f0;
+          background-color: ${Theme.card.hover};
         }
       `}
     >
@@ -45,6 +48,15 @@ function Summary({
           grid-column: 1/2;
           text-align: center;
           line-height: 100%;
+          border: 1px solid;
+          width: 60px;
+          margin: 0 10px;
+          text-align: center;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 8px;
+          margin-left: 1 0px;
+          background-color: ${Theme.card.no};
         `}
       >
         {no}
@@ -52,6 +64,7 @@ function Summary({
       <span
         css={css`
           font-size: 20px;
+          padding-top: 12px;
         `}
       >
         {title}
@@ -61,6 +74,16 @@ function Summary({
           grid-row: 1/3;
           grid-column: 3/4;
           text-align: center;
+          line-height: 100%;
+          border: 1px solid;
+          width: 60px;
+          margin: 0 10px;
+          text-align: center;
+          height: 30px;
+          line-height: 30px;
+          border-radius: 8px;
+          margin-left: 1 0px;
+          background-color: ${Theme.card.viewCount};
         `}
       >
         {viewCount}
@@ -99,12 +122,12 @@ function Detail({
     <div
       css={css`
         display: grid;
-        grid-template-rows: 20px 45px 1fr 40px;
-        grid-template-columns: 50px 1fr 180px 50px;
+        grid-template-rows: 20px auto 1fr 40px;
+        grid-template-columns: 80px 1fr 180px 90px;
         border: 1px solid black;
         border-radius: 8px;
         overflow: hidden;
-        background-color: lightcyan;
+        background-color: ${Theme.card.background};
       `}
     >
       <span
@@ -114,7 +137,7 @@ function Detail({
           border-bottom: 1px solid black;
           padding: 8px;
           position: relative;
-          background-color: lightgreen;
+          background-color: ${Theme.card.header};
         `}
       >
         <span
@@ -125,12 +148,12 @@ function Detail({
             left: 50%;
 
             border: 1px solid;
-            width: 30px;
+            width: 60px;
             text-align: center;
             height: 30px;
             line-height: 30px;
             border-radius: 8px;
-            background-color: bisque;
+            background-color: ${Theme.card.no};
           `}
         >
           {no}
@@ -142,7 +165,7 @@ function Detail({
           grid-row: 1/2;
           padding: 8px;
           font-size: 12px;
-          background-color: lightgreen;
+          background-color: ${Theme.card.header};
         `}
       >
         {category}
@@ -154,7 +177,7 @@ function Detail({
           border-bottom: 1px solid black;
           padding: 8px;
           position: relative;
-          background-color: lightgreen;
+          background-color: ${Theme.card.header};
         `}
       >
         <span
@@ -164,12 +187,12 @@ function Detail({
             transform: translate(-50%, -50%);
             left: 50%;
             border: 1px solid;
-            width: 30px;
+            width: 60px;
             text-align: center;
             height: 30px;
             line-height: 30px;
             border-radius: 8px;
-            background-color: bisque;
+            background-color: ${Theme.card.viewCount};
           `}
         >
           {viewCount + 1}
@@ -182,7 +205,7 @@ function Detail({
           border-bottom: 1px solid black;
           padding: 8px;
           font-size: 24px;
-          background-color: lightgreen;
+          background-color: ${Theme.card.header};
         `}
       >
         {title}
@@ -219,14 +242,7 @@ function Detail({
         css={css`
           grid-column: 4/5;
           grid-row: 4/5;
-          border: 1px solid;
-          border-radius: 6px;
-          width: 40px;
-          height: 30px;
-
-          &:hover {
-            background-color: #d0d0d0;
-          }
+          margin: 0 auto;
         `}
         onClick={() => {
           remove({ no });
