@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "memory-map",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/core": "^7.19.1",
+    "@divops/utils-github-storage": "^0.0.3",
+    "@divops/utils-kakao-oauth": "^0.0.1",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
     "next": "12.3.0",
@@ -19,6 +22,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
+    "@types/babel__core": "^7",
     "@types/node": "18.7.16",
     "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",
