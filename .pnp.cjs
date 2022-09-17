@@ -49,12 +49,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.23.0"],\
             ["eslint-config-next", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:12.3.0"],\
             ["eslint-plugin-import", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.26.0"],\
+            ["lru-cache", "npm:7.14.0"],\
             ["next", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:12.3.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:18.2.0"],\
             ["react-hook-form", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:7.35.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"],\
-            ["uuid", "npm:9.0.0"]\
+            ["uuid", "npm:9.0.0"],\
+            ["zod", "npm:3.19.1"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -3296,6 +3298,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["yallist", "npm:4.0.0"]\
           ],\
           "linkType": "HARD"\
+        }],\
+        ["npm:7.14.0", {\
+          "packageLocation": "./.yarn/cache/lru-cache-npm-7.14.0-354cf654ec-efdd329f2c.zip/node_modules/lru-cache/",\
+          "packageDependencies": [\
+            ["lru-cache", "npm:7.14.0"]\
+          ],\
+          "linkType": "HARD"\
         }]\
       ]],\
       ["memory-map", [\
@@ -3319,12 +3328,14 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint", "npm:8.23.0"],\
             ["eslint-config-next", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:12.3.0"],\
             ["eslint-plugin-import", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.26.0"],\
+            ["lru-cache", "npm:7.14.0"],\
             ["next", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:12.3.0"],\
             ["react", "npm:18.2.0"],\
             ["react-dom", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:18.2.0"],\
             ["react-hook-form", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:7.35.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"],\
-            ["uuid", "npm:9.0.0"]\
+            ["uuid", "npm:9.0.0"],\
+            ["zod", "npm:3.19.1"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -4473,6 +4484,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/yocto-queue-npm-0.1.0-c6c9a7db29-f77b3d8d00.zip/node_modules/yocto-queue/",\
           "packageDependencies": [\
             ["yocto-queue", "npm:0.1.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["zod", [\
+        ["npm:3.19.1", {\
+          "packageLocation": "./.yarn/cache/zod-npm-3.19.1-5084a5dfc9-56e420ea58.zip/node_modules/zod/",\
+          "packageDependencies": [\
+            ["zod", "npm:3.19.1"]\
           ],\
           "linkType": "HARD"\
         }]\

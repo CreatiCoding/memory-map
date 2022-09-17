@@ -2573,6 +2573,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lru-cache@npm:^7.14.0":
+  version: 7.14.0
+  resolution: "lru-cache@npm:7.14.0"
+  checksum: efdd329f2c1bb790b71d497c6c59272e6bc2d7dd060ba55fc136becd3dd31fc8346edb446275504d94cb60d3c8385dbf5267b79b23789e409b2bdf302d13f0d7
+  languageName: node
+  linkType: hard
+
 "memory-map@workspace:.":
   version: 0.0.0-use.local
   resolution: "memory-map@workspace:."
@@ -2593,12 +2600,14 @@ __metadata:
     eslint: ^8.23.0
     eslint-config-next: 12.3.0
     eslint-plugin-import: ^2.26.0
+    lru-cache: ^7.14.0
     next: 12.3.0
     react: 18.2.0
     react-dom: 18.2.0
     react-hook-form: ^7.35.0
     typescript: ^4.8.3
     uuid: ^9.0.0
+    zod: ^3.19.1
   languageName: unknown
   linkType: soft
 
@@ -3583,5 +3592,12 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.19.1":
+  version: 3.19.1
+  resolution: "zod@npm:3.19.1"
+  checksum: 56e420ea5845912324a8fc61833714a2aec84954e418b52660d76502183c6e62fef9447cbfa64349640c5ce190cf2c24267e006bb80f066183e2f3fa9fe11864
   languageName: node
   linkType: hard
