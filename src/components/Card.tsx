@@ -7,7 +7,7 @@ import { Button } from "./Button";
 
 interface Props extends Learning {
   // eslint-disable-next-line no-unused-vars
-  remove: (learning: { no: Learning["no"] }) => void;
+  remove?: (learning: { no: Learning["no"] }) => void;
 }
 
 function Summary({
@@ -230,26 +230,28 @@ function Detail({
       </span>
       <span
         css={css`
-          grid-column: 3/4;
+          grid-column: ${remove == null ? `3/5` : `3/4`};
           grid-row: 4/5;
           padding: 8px;
         `}
       >
         {createdAt}
       </span>
-      <Button
-        css={css`
-          grid-column: 4/5;
-          grid-row: 4/5;
-          margin: 0 auto;
-        `}
-        onClick={() => {
-          remove({ no });
-          router.push("/");
-        }}
-      >
-        삭제
-      </Button>
+      {remove == null ? null : (
+        <Button
+          css={css`
+            grid-column: 4/5;
+            grid-row: 4/5;
+            margin: 0 auto;
+          `}
+          onClick={() => {
+            remove({ no });
+            router.push("/");
+          }}
+        >
+          삭제
+        </Button>
+      )}
     </div>
   );
 }

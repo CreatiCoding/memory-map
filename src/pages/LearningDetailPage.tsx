@@ -9,7 +9,7 @@ import { Learning, useLearning } from "../hooks/useLearning";
 export function LearningDetailPage() {
   const router = useRouter();
   const category = "coding-architecture";
-  const { getDetail, remove } = useLearning(category);
+  const { getDetail } = useLearning(category);
   const [learning, setLearning] = useState<Learning>();
 
   useEffect(() => {
@@ -39,7 +39,7 @@ export function LearningDetailPage() {
         <Title center>Memory Map</Title>
         <br />
         <br />
-        <Card.Detail {...learning} category={category} remove={remove} />
+        <Card.Detail {...learning} category={category} />
       </Main>
     </Background>
   );

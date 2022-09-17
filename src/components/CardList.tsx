@@ -9,11 +9,13 @@ export function CardList({
   pageNo = 1,
   pageSize = 5,
   sortType = "asc",
+  useInput = false,
 }: {
   category: Learning["category"];
   pageNo?: number;
   pageSize?: number;
   sortType?: "asc" | "desc";
+  useInput?: boolean;
 }) {
   const { getList, remove } = useLearning(category);
   const [learnings, setLearnings] = useState<Learning[]>([]);
@@ -25,9 +27,13 @@ export function CardList({
 
   return (
     <section>
-      <CardInput width={500} category={category} />
+      {useInput ? (
+        <>
+          <CardInput width={500} category={category} />
 
-      <br />
+          <br />
+        </>
+      ) : null}
 
       <ul
         css={css`
