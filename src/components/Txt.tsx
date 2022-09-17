@@ -21,7 +21,7 @@ function getCss({
   const common = css`
     white-space: pre-wrap;
     text-align: ${center === true ? "center" : "unset"};
-    font-size: ${size}px;
+    ${size == null ? "" : "font-size: ${size}px;"}
   `;
 
   const headerCommon = css`
@@ -63,7 +63,7 @@ function getCss({
     case "span":
     case "p": {
       return css`
-        font-size: 14px;
+        font-size: 20px;
         ${common}
       `;
     }
