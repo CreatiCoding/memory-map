@@ -43,6 +43,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.16"],\
             ["@types/react", "npm:18.0.19"],\
             ["@types/react-dom", "npm:18.0.6"],\
+            ["@types/uuid", "npm:8.3.4"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
             ["@typescript-eslint/parser", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
             ["eslint", "npm:8.23.0"],\
@@ -53,7 +54,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:18.2.0"],\
             ["react-hook-form", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:7.35.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"],\
-            ["use-local-storage", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.3.6"]\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -1219,6 +1220,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-scheduler-npm-0.16.2-ba3a7d8c68-b6b4dcfeae.zip/node_modules/@types/scheduler/",\
           "packageDependencies": [\
             ["@types/scheduler", "npm:0.16.2"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/uuid", [\
+        ["npm:8.3.4", {\
+          "packageLocation": "./.yarn/cache/@types-uuid-npm-8.3.4-7547f4402c-6f11f3ff70.zip/node_modules/@types/uuid/",\
+          "packageDependencies": [\
+            ["@types/uuid", "npm:8.3.4"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3303,6 +3313,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/node", "npm:18.7.16"],\
             ["@types/react", "npm:18.0.19"],\
             ["@types/react-dom", "npm:18.0.6"],\
+            ["@types/uuid", "npm:8.3.4"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
             ["@typescript-eslint/parser", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
             ["eslint", "npm:8.23.0"],\
@@ -3313,7 +3324,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["react-dom", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:18.2.0"],\
             ["react-hook-form", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:7.35.0"],\
             ["typescript", "patch:typescript@npm%3A4.8.3#~builtin<compat/typescript>::version=4.8.3&hash=a1c5e5"],\
-            ["use-local-storage", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.3.6"]\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "SOFT"\
         }]\
@@ -4346,28 +4357,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["use-local-storage", [\
-        ["npm:2.3.6", {\
-          "packageLocation": "./.yarn/cache/use-local-storage-npm-2.3.6-37aaeda3a3-e040b2344a.zip/node_modules/use-local-storage/",\
-          "packageDependencies": [\
-            ["use-local-storage", "npm:2.3.6"]\
-          ],\
-          "linkType": "SOFT"\
-        }],\
-        ["virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.3.6", {\
-          "packageLocation": "./.yarn/__virtual__/use-local-storage-virtual-a62a35c6b9/0/cache/use-local-storage-npm-2.3.6-37aaeda3a3-e040b2344a.zip/node_modules/use-local-storage/",\
-          "packageDependencies": [\
-            ["use-local-storage", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.3.6"],\
-            ["@types/react", "npm:18.0.19"],\
-            ["react", "npm:18.2.0"]\
-          ],\
-          "packagePeers": [\
-            "@types/react",\
-            "react"\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["use-sync-external-store", [\
         ["npm:1.2.0", {\
           "packageLocation": "./.yarn/cache/use-sync-external-store-npm-1.2.0-44f75d2564-5c639e0f8d.zip/node_modules/use-sync-external-store/",\
@@ -4386,6 +4375,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packagePeers": [\
             "@types/react",\
             "react"\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["uuid", [\
+        ["npm:9.0.0", {\
+          "packageLocation": "./.yarn/cache/uuid-npm-9.0.0-46c41e3e43-8dd2c83c43.zip/node_modules/uuid/",\
+          "packageDependencies": [\
+            ["uuid", "npm:9.0.0"]\
           ],\
           "linkType": "HARD"\
         }]\

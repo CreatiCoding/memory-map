@@ -18,7 +18,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.35.0",
-    "use-local-storage": "^2.3.6"
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.10.2",
@@ -26,6 +26,7 @@
     "@types/node": "18.7.16",
     "@types/react": "18.0.19",
     "@types/react-dom": "18.0.6",
+    "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.36.2",
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
