@@ -1,3 +1,5 @@
+import * as z from "zod";
+import { Primitive, Scalars, ZodLiteral } from "zod";
 import { reverseYYYYMMddHHmmss, yyyyMMddHHmmss } from "../utils/date";
 
 const LEARNING_CATEGORY = {
@@ -13,25 +15,52 @@ const LEARNING_CATEGORY = {
 
 export const LEARNING_CATEGORY_NAMES = Object.keys(LEARNING_CATEGORY);
 
-interface LearningCategory {
-  name: keyof typeof LEARNING_CATEGORY;
-  value: typeof LEARNING_CATEGORY[LearningCategory["name"]];
-}
+const learningCategoryNameType = z.union(
+  Object.keys(LEARNING_CATEGORY).map((x) => z.literal(x)) as unknown as [
+    ZodLiteral<Primitive>,
+    ZodLiteral<Primitive>,
+    ...ZodLiteral<Primitive>[]
+  ]
+);
 
-interface Tag {
-  name: string;
-  url: string;
-}
+const learningCategoryValueType = z.union(
+  Object.values(LEARNING_CATEGORY).map((x) =>
+    z.object({
+      name: z.literal(x.name),
+      value: z.literal(x.value),
+    })
+  ) as unknown as [
+    ZodLiteral<Scalars>,
+    ZodLiteral<Scalars>,
+    ...ZodLiteral<Scalars>[]
+  ]
+);
 
-export interface Learning {
-  category: LearningCategory["name"];
-  no: number;
-  title: string;
-  contents: string;
-  viewCount: number;
-  tags: Tag[];
-  createdAt: string;
-}
+const learningCategoryType = z.object({
+  name: learningCategoryNameType,
+  value: learningCategoryValueType,
+});
+
+interface LearningCategory extends z.infer<typeof learningCategoryType> {}
+
+const tagType = z.object({
+  name: z.string(),
+  url: z.string(),
+});
+
+const learningType = z.object({
+  category: learningCategoryNameType,
+  no: z.number(),
+  title: z.string(),
+  contents: z.string(),
+  viewCount: z.number(),
+  tags: z.array(tagType),
+  createdAt: z.string(),
+});
+
+export const learningArrayType = z.array(learningType);
+
+export interface Learning extends z.infer<typeof learningType> {}
 
 function getList(category: LearningCategory["name"]) {
   if (typeof window === "undefined") return [];
