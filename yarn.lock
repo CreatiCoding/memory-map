@@ -2597,6 +2597,7 @@ __metadata:
     "@types/uuid": ^8.3.4
     "@typescript-eslint/eslint-plugin": ^5.36.2
     "@typescript-eslint/parser": ^5.36.2
+    axios: ^0.27.2
     eslint: ^8.23.0
     eslint-config-next: 12.3.0
     eslint-plugin-import: ^2.26.0

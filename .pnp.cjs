@@ -46,6 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/uuid", "npm:8.3.4"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
             ["@typescript-eslint/parser", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
+            ["axios", "npm:0.27.2"],\
             ["eslint", "npm:8.23.0"],\
             ["eslint-config-next", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:12.3.0"],\
             ["eslint-plugin-import", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.26.0"],\
@@ -3325,6 +3326,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/uuid", "npm:8.3.4"],\
             ["@typescript-eslint/eslint-plugin", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
             ["@typescript-eslint/parser", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:5.36.2"],\
+            ["axios", "npm:0.27.2"],\
             ["eslint", "npm:8.23.0"],\
             ["eslint-config-next", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:12.3.0"],\
             ["eslint-plugin-import", "virtual:d04da6d158bbbec90e6b8519a920a7406e3372d5524c74c427b1276fe6b28b0e11e350ad73d5886c52413783ece95afa468ef8c8cfa2e8cb2c3178171cebc89d#npm:2.26.0"],\
