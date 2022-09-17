@@ -38,5 +38,8 @@ module.exports = {
     "prefer-const": "error",
     // var는 반드시 안쓰도록 처리
     "no-var": "error",
+
+    // zod로 타입 구성하고 interface로 타이핑할 때 유용함
+    "@typescript-eslint/no-empty-interface": ["off"],
   },
 };
