@@ -1,11 +1,14 @@
 import { env } from "./env";
 
 export function ensureEnv(key: string) {
-  const value = process.env[key];
+  const processEnvValue = process.env[key];
+  const envValue = env[key];
 
-  if (value == null && env[key] == null) {
+  const value = processEnvValue ?? envValue;
+
+  if (value == null) {
     throw new Error(`key(${key})가 제공되지 않았습니다.`);
   }
 
-  return value ?? env[key];
+  return value;
 }
