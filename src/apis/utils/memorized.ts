@@ -1,12 +1,15 @@
 import Cache from "lru-cache";
 
-const MAX_AGE = 1_000;
+const MAX_AGE = 10 * 60;
 const MAX_SIZE = 100;
 
 // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-explicit-any
-export function memorized<F extends (params: any) => any>(func: F): F {
+export function memorized<F extends (params: any) => any>(
+  func: F,
+  { ttl }: { ttl?: number } = {}
+): F {
   const cache = new Cache({
-    ttl: MAX_AGE != null ? MAX_AGE * 1_000 : undefined,
+    ttl: ttl ?? (MAX_AGE != null ? MAX_AGE * 1_000 : undefined),
     max: MAX_SIZE,
   });
 

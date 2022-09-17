@@ -11,6 +11,18 @@ const margin = (px: number, x?: number) => {
     `;
   }
 };
+margin.top = (px: number) => css`
+  margin-top: ${px}px;
+`;
+margin.bottom = (px: number) => css`
+  margin-bottom: ${px}px;
+`;
+margin.left = (px: number) => css`
+  margin-left: ${px}px;
+`;
+margin.right = (px: number) => css`
+  margin-right: ${px}px;
+`;
 
 margin.x = (px: number) => {
   return css`

@@ -51,11 +51,14 @@ export function RegisterUser({ initial }: { initial: string }) {
               name="username"
               type="text"
               css={width.percent(100)}
+              autoFocus
+              submit={methods.handleSubmit(async ({ username }) => {
+                await setUserName({ username, close });
+              })}
             />
             <Button.Submit
-              onClick={methods.handleSubmit(({ username }) => {
-                setUserName(username);
-                close();
+              onClick={methods.handleSubmit(async ({ username }) => {
+                await setUserName({ username, close });
               })}
             >
               추가

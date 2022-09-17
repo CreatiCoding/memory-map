@@ -1,47 +1,28 @@
-import { css } from "@emotion/react";
-import { useEffect, useState } from "react";
-import { Learning, useLearning } from "../hooks/useLearning";
+import { Learning } from "../models/learning";
+import { margin } from "../utils/css";
 import { Card } from "./Card";
 import { CardInput } from "./CardInput";
 
 export function CardList({
-  category,
-  pageNo = 1,
-  pageSize = 5,
-  sortType = "asc",
   useInput = false,
+  list,
+  goDetail,
 }: {
-  category: Learning["category"];
   pageNo?: number;
   pageSize?: number;
   sortType?: "asc" | "desc";
   useInput?: boolean;
+  list: Learning[];
+  // eslint-disable-next-line no-unused-vars
+  goDetail: (no: number) => void;
 }) {
-  const { getList, remove } = useLearning(category);
-  const [learnings, setLearnings] = useState<Learning[]>([]);
-
-  useEffect(() => {
-    setLearnings(getList({ pageNo, pageSize, sortType }).data);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pageNo, pageSize, sortType]);
-
   return (
     <section>
-      {useInput ? (
-        <>
-          <CardInput width={500} category={category} />
+      {useInput ? <CardInput width={500} css={margin.y(30)} /> : null}
 
-          <br />
-        </>
-      ) : null}
-
-      <ul
-        css={css`
-          /* background-color: blueviolet; */
-        `}
-      >
-        {learnings.map((x, index) => (
-          <Card.Summary key={`card-${index}`} {...x} remove={remove} />
+      <ul>
+        {list.map((x, index) => (
+          <Card.Summary key={`card-${index}`} {...x} goDetail={goDetail} />
         ))}
       </ul>
     </section>

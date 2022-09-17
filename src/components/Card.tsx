@@ -1,27 +1,26 @@
 import { css } from "@emotion/react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Theme } from "../constants/colors";
-import { Learning, useLearning } from "../hooks/useLearning";
+import { Learning } from "../models/learning";
 import { Button } from "./Button";
 
 interface Props extends Learning {
   // eslint-disable-next-line no-unused-vars
   remove?: (learning: { no: Learning["no"] }) => void;
+  // eslint-disable-next-line no-unused-vars
+  goDetail: (no: number) => void;
 }
 
 function Summary({
   no,
   title,
-  viewCount,
   createdAt,
-}: Pick<Props, "no" | "title" | "viewCount" | "createdAt" | "remove">) {
-  const router = useRouter();
+  goDetail,
+}: Pick<Props, "no" | "title" | "createdAt" | "remove" | "goDetail">) {
   return (
     <li
-      onClick={() => {
-        router.push(`/learning/${no}`);
-      }}
+      onClick={() => goDetail(no)}
       css={css`
         margin: 16px 0;
         border: 1px solid;
@@ -70,27 +69,10 @@ function Summary({
       </span>
       <span
         css={css`
-          grid-row: 1/3;
-          grid-column: 3/4;
-          text-align: center;
-          line-height: 100%;
-          border: 1px solid;
-          width: 60px;
-          margin: 0 10px;
-          text-align: center;
-          height: 30px;
-          line-height: 30px;
-          border-radius: 8px;
-          margin-left: 1 0px;
-          background-color: ${Theme.card.viewCount};
-        `}
-      >
-        {viewCount}
-      </span>
-      <span
-        css={css`
           text-align: right;
           font-size: 10px;
+          grid-row: 2 / 3;
+          grid-column: 2/4;
         `}
       >
         {createdAt}
@@ -106,16 +88,14 @@ function Detail({
   no,
   tags,
   title,
-  viewCount,
   remove,
-}: Props) {
+}: Omit<Props, "goDetail">) {
   const router = useRouter();
-  const { modify } = useLearning(category);
+  const [markup, setMarkup] = useState<string>("<div/>");
 
   useEffect(() => {
-    modify({ no, title, contents, viewCount: viewCount + 1 });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setMarkup(convert(contents));
+  }, [contents]);
 
   return (
     <div
@@ -160,7 +140,7 @@ function Detail({
       </span>
       <span
         css={css`
-          grid-column: 2/4;
+          grid-column: 2/5;
           grid-row: 1/2;
           padding: 8px;
           font-size: 12px;
@@ -171,35 +151,7 @@ function Detail({
       </span>
       <span
         css={css`
-          grid-column: 4/5;
-          grid-row: 1/3;
-          border-bottom: 1px solid black;
-          padding: 8px;
-          position: relative;
-          background-color: ${Theme.card.header};
-        `}
-      >
-        <span
-          css={css`
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            left: 50%;
-            border: 1px solid;
-            width: 60px;
-            text-align: center;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 8px;
-            background-color: ${Theme.card.viewCount};
-          `}
-        >
-          {viewCount + 1}
-        </span>
-      </span>
-      <span
-        css={css`
-          grid-column: 2/4;
+          grid-column: 2/5;
           grid-row: 2/3;
           border-bottom: 1px solid black;
           padding: 8px;
@@ -217,7 +169,7 @@ function Detail({
           word-break: break-all;
           white-space: pre-line;
         `}
-        dangerouslySetInnerHTML={{ __html: convert(contents) }}
+        dangerouslySetInnerHTML={{ __html: markup }}
       ></section>
       <span
         css={css`
@@ -233,6 +185,7 @@ function Detail({
           grid-column: ${remove == null ? `3/5` : `3/4`};
           grid-row: 4/5;
           padding: 8px;
+          ${remove == null ? `text-align: right;` : ``};
         `}
       >
         {createdAt}

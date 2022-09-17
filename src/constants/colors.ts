@@ -19,7 +19,6 @@ export const DefaultTheme = {
   card: {
     header: "lightgreen",
     no: "bisque",
-    viewCount: "bisque",
     background: "lightcyan",
     hover: "#91ffff",
   },
@@ -34,7 +33,6 @@ export const PASTEL_THEME = {
     background: COLOR_SET.PASTEL.yellow,
     header: "white",
     no: COLOR_SET.PASTEL.lightvilot,
-    viewCount: COLOR_SET.PASTEL.lightvilot,
     hover: COLOR_SET.PASTEL.vilot,
   },
   button: {
@@ -48,7 +46,6 @@ export const NOTION_THEME = {
     background: "white",
     header: COLOR_SET.NOTION.header,
     no: "white",
-    viewCount: "white",
     hover: COLOR_SET.NOTION.hover,
   },
   button: {

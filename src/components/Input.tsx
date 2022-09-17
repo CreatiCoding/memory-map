@@ -15,6 +15,8 @@ interface Props {
   type: "text" | "textarea";
   className?: string;
   width?: number;
+  autoFocus?: boolean;
+  submit?: () => void;
 }
 
 export function Input({
@@ -24,6 +26,8 @@ export function Input({
   type,
   className,
   width = 300,
+  autoFocus = false,
+  submit,
 }: Props) {
   const { register, watch, formState } = useFormContext();
   const errors = formState.errors;
@@ -53,6 +57,7 @@ export function Input({
               },
             })}
             rows={6}
+            autoFocus={autoFocus}
           />
         </Container>
         <Message message={errors[name]?.message} />
@@ -77,11 +82,21 @@ export function Input({
           `}
           type={type}
           value={value}
+          autoFocus={autoFocus}
           {...register(name, {
             validate: {
               empty: (v) => (v != null && v !== "") || "값을 입력해주세요",
             },
           })}
+          onKeyUp={(e) => {
+            if (e.key === "Enter") {
+              if (submit == null) {
+                return;
+              }
+
+              submit();
+            }
+          }}
         />
       </Container>
       <Message message={errors[name]?.message} />

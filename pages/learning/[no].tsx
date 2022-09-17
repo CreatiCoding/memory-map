@@ -1,1 +1,1 @@
-export { LearningDetailPage as default } from "../../src/pages/LearningDetailPage";
+export { MyLearningDetailPage as default } from "../../src/pages/MyLearningDetailPage";

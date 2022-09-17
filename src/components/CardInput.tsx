@@ -1,7 +1,8 @@
 import { css } from "@emotion/react";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useForm, FormProvider } from "react-hook-form";
-import { Learning, useLearning } from "../hooks/useLearning";
+import { createLearning } from "../remotes/learning";
 import cssUtils from "../utils/css";
 import { Button } from "./Button";
 import { Input } from "./Input";
@@ -16,21 +17,24 @@ const defaultValues = {
   contents: "",
 };
 
-interface Props extends Pick<Learning, "category"> {
+interface Props {
+  className?: string;
   width?: number;
 }
 
-export function CardInput({ category, width = 500 }: Props) {
-  const { add } = useLearning(category);
+export function CardInput({ className, width = 500 }: Props) {
   const router = useRouter();
+
   const methods = useForm<InputProps>({
     defaultValues,
     mode: "onChange",
   });
+
   const { title, contents } = methods.watch();
 
   return (
     <div
+      className={className}
       css={css`
         ${cssUtils.width(width)}
         margin: 0 auto;
@@ -45,9 +49,18 @@ export function CardInput({ category, width = 500 }: Props) {
           width={500}
         />
         <Button.Submit
-          onClick={methods.handleSubmit(() => {
-            add({ title, contents, tags: [] });
-            router.reload();
+          onClick={methods.handleSubmit(async () => {
+            try {
+              await createLearning({ title, contents });
+
+              router.reload();
+            } catch (error: any) {
+              if (axios.isAxiosError(error)) {
+                alert(JSON.stringify(error.response?.data, null, 2));
+              } else {
+                alert(error.message);
+              }
+            }
           })}
         >
           추가

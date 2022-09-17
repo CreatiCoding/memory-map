@@ -1,4 +1,6 @@
+import axios from "axios";
 import { useEffect } from "react";
+import { login } from "../remotes/user";
 import { useLocalStorageStage } from "./useLocalStorageStage";
 
 interface Member {
@@ -43,10 +45,27 @@ export function useUser(initial: string) {
 
   return [
     user,
-    (username: string) =>
-      setUser({
-        username,
-        secretKey: user?.secretKey ?? initial,
-      }),
+    async ({ username, close }: { username: string; close: () => void }) => {
+      const secretKey = user?.secretKey ?? initial;
+
+      try {
+        const message = await login({ username, secretKey });
+
+        alert(message);
+
+        setUser({
+          username,
+          secretKey: user?.secretKey ?? initial,
+        });
+
+        close();
+      } catch (error: any) {
+        if (axios.isAxiosError(error)) {
+          alert(JSON.stringify(error.response?.data));
+        } else {
+          alert(error.meesage);
+        }
+      }
+    },
   ] as const;
 }
